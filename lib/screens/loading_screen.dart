@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:clima/services/location.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'location_screen.dart';
 
 
@@ -44,7 +44,10 @@ LocationScreen()
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-
+       child:SpinKitThreeBounce(
+         color:Colors.red,
+         size:100.0
+       )
       ),
     );
   }
