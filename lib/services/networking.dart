@@ -5,11 +5,11 @@ class NetworkHelper{
   NetworkHelper(this.url);
   final String url;
 
-  void getData() async{
+  Future getData() async{
     Response response = await get(url);  
   if(response.statusCode== 200){
     String data = response.body;
-    var decodedData = jsonDecode(data);
+    return jsonDecode(data);
   }
   else{
     print(response.statusCode);
