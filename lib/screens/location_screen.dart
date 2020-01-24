@@ -25,11 +25,11 @@ class _LocationScreenState extends State<LocationScreen> {
   updateUI (dynamic weatherData){
     setState(() {
       double temp =  weatherData['main']['temp'];
-    temperature = temp.toInt();
-    condition = weatherData['weather'][0]['id'];
-    cityName = weatherData['name'];
-    weatherMessage = weatherModel.getMessage(temperature);
-    weatherIcon = weatherModel.getWeatherIcon(condition);
+      temperature = temp.toInt();
+      condition = weatherData['weather'][0]['id'];
+      cityName = weatherData['name'];
+      weatherMessage = weatherModel.getMessage(temperature);
+      weatherIcon = weatherModel.getWeatherIcon(condition);
       
     });
     
@@ -65,8 +65,9 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                   FlatButton(
-                    onPressed: () {
-                      
+                    onPressed: () async{
+                      var weatherData = await weatherModel.getLocationWeather();
+                      updateUI(weatherData);
                     },
                     child: Icon(
                       Icons.location_city,
